@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fares Ads Dashboard | Relatórios e Análises Google Ads</title>
+
+    <meta
+        name="description"
+        content="Fares Ads Dashboard é uma plataforma interna de engenharia de dados e relatórios para acompanhamento de contas Google Ads autorizadas."
+    >
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #202124;
+            background-color: #f4f6f8;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background-color: #ffffff;
+            padding: 20px 40px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a73e8;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: #5f6368;
+            text-decoration: none;
+            font-size: 15px;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: #1a73e8;
+        }
+
+        .main {
+            flex: 1;
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        .hero {
+            background-color: #ffffff;
+            padding: 48px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            border: 1px solid #eaedf1;
+        }
+
+        h1 {
+            font-size: 34px;
+            font-weight: 700;
+            color: #202124;
+            margin-bottom: 18px;
+            letter-spacing: -0.5px;
+        }
+
+        h2 {
+            margin-top: 36px;
+            margin-bottom: 14px;
+            font-size: 22px;
+            font-weight: 600;
+            color: #202124;
+            border-bottom: 2px solid #e8f0fe;
+            padding-bottom: 8px;
+        }
+
+        p {
+            color: #5f6368;
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+
+        .intro {
+            font-size: 18px;
+            color: #3c4043;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            margin: 16px 0 24px 24px;
+            color: #5f6368;
+        }
+
+        li {
+            font-size: 16px;
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .action-area {
+            margin-top: 36px;
+            padding-top: 24px;
+            border-top: 1px solid #eef2f6;
+            display: flex;
+            gap: 16px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .login-btn {
+            display: inline-block;
+            background-color: #1a73e8;
+            color: #ffffff;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 2px 6px rgba(26, 115, 232, 0.3);
+        }
+
+        .login-btn:hover {
+            background-color: #1557b0;
+            box-shadow: 0 4px 10px rgba(26, 115, 232, 0.4);
+        }
+
+        .secondary-btn {
+            display: inline-block;
+            background-color: #f1f3f4;
+            color: #1a73e8;
+            padding: 14px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.2s ease;
+        }
+
+        .secondary-btn:hover {
+            background-color: #e8eaed;
+        }
+
+        .notice {
+            margin-top: 30px;
+            padding: 16px 20px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #1a73e8;
+            border-radius: 0 8px 8px 0;
+            font-size: 14px;
+            color: #5f6368;
+        }
+
+        .footer {
+            background-color: #ffffff;
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+            color: #70757a;
+            font-size: 14px;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .footer-links {
+            margin: 12px 0;
+        }
+
+        .footer a {
+            color: #1a73e8;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 640px) {
+            .header {
+                padding: 16px 20px;
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+
+            .nav-links a {
+                margin-left: 0;
+                margin-right: 15px;
+            }
+
+            .main {
+                padding: 24px 16px;
+            }
+
+            .hero {
+                padding: 28px 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            .intro {
+                font-size: 16px;
+            }
+
+            .action-area {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .login-btn, .secondary-btn {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <a href="/" class="brand">Fares Ads Dashboard</a>
+        <nav class="nav-links">
+            <a href="/fares-ads-dashboard.html">Visão Geral</a>
+            <a href="/politica-de-privacidade.html">Privacidade</a>
+            <a href="/termos-de-servico.html">Termos</a>
+            <a href="/login">Entrar</a>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="hero">
+
+            <h1>Fares Ads Dashboard</h1>
+
+            <p class="intro">
+                O Fares Ads Dashboard é uma plataforma interna e de acesso restrito de propriedade da Fares Araújo &amp; Associados, desenvolvida para centralizar a visualização, a análise e o acompanhamento de desempenho de campanhas publicitárias do Google Ads.
+            </p>
+
+            <p class="intro">
+                A aplicação utiliza a Google Ads API para coletar métricas oficiais de campanhas autorizadas e disponibilizá-las em dashboards e relatórios analíticos de gestão.
+            </p>
+
+            <h2>Finalidade do aplicativo</h2>
+
+            <p>
+                O Fares Ads Dashboard foi desenvolvido para facilitar o acompanhamento de campanhas publicitárias administradas pela equipe autorizada.
+            </p>
+
+            <p>
+                A plataforma permite visualizar informações como contas conectadas, campanhas, custos, impressões, cliques, conversões e outras métricas disponibilizadas pela Google Ads API.
+            </p>
+
+            <p>
+                Essas informações são utilizadas exclusivamente para análise de desempenho, acompanhamento de indicadores e geração de relatórios.
+            </p>
+
+            <h2>Como o acesso aos dados funciona</h2>
+
+            <ul>
+                <li>O acesso aos dados do Google ocorre somente mediante autorização OAuth.</li>
+                <li>A aplicação acessa somente contas Google Ads para as quais o usuário autenticado possui permissão.</li>
+                <li>Os dados são utilizados para dashboards, relatórios e análises internas.</li>
+                <li>A aplicação realiza operações de consulta e leitura.</li>
+                <li>O usuário pode revogar o acesso à aplicação através das configurações da própria Conta Google.</li>
+            </ul>
+
+            <h2>Quem pode utilizar</h2>
+
+            <p>
+                O acesso ao Fares Ads Dashboard é restrito a profissionais autorizados da Fares Araújo &amp; Associados responsáveis pela análise e gestão das contas publicitárias conectadas.
+            </p>
+
+            <div class="action-area">
+                <a href="https://www.faresoliveira.com.br/login" class="login-btn">
+                    Acessar Fares Ads Dashboard
+                </a>
+                <a href="/fares-ads-dashboard.html" class="secondary-btn">
+                    Conhecer Detalhes da Aplicação
+                </a>
+            </div>
+
+            <div class="notice">
+                O Fares Ads Dashboard é uma aplicação independente e não é afiliado, patrocinado ou administrado pelo Google.
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>
+            &copy; 2026 Fares Araújo &amp; Associados. Todos os direitos reservados.
+        </p>
+
+        <div class="footer-links">
+            <a href="https://www.faresoliveira.com.br/fares-ads-dashboard.html">Fares Ads Dashboard</a>
+            <a href="https://www.faresoliveira.com.br/politica-de-privacidade.html">Política de Privacidade</a>
+            <a href="https://www.faresoliveira.com.br/termos-de-servico.html">Termos de Serviço</a>
+        </div>
+
+        <p>
+            Contato:
+            <a href="mailto:luiz.henrique@v4company.com">luiz.henrique@v4company.com</a>
+        </p>
+    </footer>
+
+</body>
+</html>
